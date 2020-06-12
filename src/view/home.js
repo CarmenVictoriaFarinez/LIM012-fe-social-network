@@ -7,6 +7,8 @@ const changeHash = (hash) => {
 export default () => {
   const viewHome = `
   <img class="logo" src="img/logo.png">
+  <p id='texto'>¿Cuál baile practicas?  
+  Comparte tus mejores pasos en la comunidad de baile más grande de internet.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>INICIA SESIÓN</p>
   <div><i class="far fa-user"></i><input id ="email" type="text" placeholder="Correo electronico"></div>
@@ -14,10 +16,12 @@ export default () => {
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
+  <div>
   <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
+  </div>
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
-  </div>`;
+  `;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-register');
   divElemt.innerHTML = viewHome;
