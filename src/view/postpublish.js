@@ -1,4 +1,6 @@
-import { updatePost, deletePost } from '../model/firebase_wall.js';
+import {
+  updatePost, deletePost,
+} from '../model/firebase_wall.js';
 
 const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) => {
   const btnShow = (btnToShow) => {
@@ -85,6 +87,33 @@ export const allPost = (data, autor) => {
     selectPriv.appendChild(optionprivac);
   }
 
+  /* const btnLike = viewpostpublish.querySelector(`#btnLike-${data.id}`);
+  getLikesPost(data.id, (likes) => {
+  //  .then(response => console.log(response));
+    const likesCounter = likes.length;
+    const likesSpan = viewpostpublish.querySelector(`#likes-count-${data.id}`);
+    // likesSpan.innerHTML = likesCounter;
+    console.log(likesSpan);
+    console.log(likesCounter);
+  });
+
+  btnLike.addEventListener('click', (event) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-undef
+    const likesCounter = likes.length;
+    const user = firebase.auth().currentUser;
+    if (likesCounter === 0) {
+      likePost(data.id, user.email)
+        .then(response => getLikesPost(data.id, (likes) => {
+          btnLike.src = 'img/like.svg';
+          // eslint-disable-next-line no-shadow
+          const likesCounter = likes.length;
+          const likesSpan = viewpostpublish.querySelector(`#likes-count-${data.id}`);
+          likesSpan.innerHTML = likesCounter;
+        }));
+    }
+ });  */
+
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
@@ -120,3 +149,12 @@ export const allPost = (data, autor) => {
   // console.log(data);
   return viewpostpublish;
 };
+
+
+// btnDeletePost.addEventListener('click', () => {
+//   deletePost(data.id);
+//   console.log(data.id);
+// });
+// console.log(data.content);
+// console.log(viewpostpublish);
+// console.log(data);
