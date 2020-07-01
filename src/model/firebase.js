@@ -4,26 +4,20 @@ export const newUser = (email, pass) => firebase.auth()
 export const logIn = (email, pass) => firebase.auth()
   .signInWithEmailAndPassword(email, pass);
 
-export const verifEmail = (route) => {
-  const user = firebase.auth().currentUser;
-  user.sendEmailVerification()
-    .then(() => {
-      console.log(route);
-    });
-};
 export const googleSignIn = () => {
   const base = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(base);
 };
-
-// const user = firebase.auth().currentUser;
 
 export const loginFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
 
-
+export const verifEmail = () => {
+  const user = firebase.auth().currentUser;
+  return user.sendEmailVerification();
+};
 /* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/wall';

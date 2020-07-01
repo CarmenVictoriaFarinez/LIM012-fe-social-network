@@ -1,8 +1,9 @@
 import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
+import { updateUser } from '../model/firebase_wall.js';
 
-const changeHash = (hash) => {
-  window.location.hash = hash;
-};
+// export const changeHash = (hash) => {
+//   window.location.hash = hash;
+// };
 
 export default () => {
   const viewHome = `
@@ -20,7 +21,8 @@ export default () => {
   <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
   </div>
-  <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
+  <p class='lil-text'>¿No tienes una cuenta?</p>
+  <p id='just-link'><a href="#/register">REGISTRATE</a></p>
   `;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-register');
@@ -31,16 +33,34 @@ export default () => {
     const pass = divElemt.querySelector('#pass');
     const logInEmail = email.value;
     const logInPass = pass.value;
+
     logIn(logInEmail, logInPass)
-      .then(() => changeHash('#/wall'))
-      .catch(() => { divElemt.querySelector('#messages').innerHTML = '⚠️ Usuario no registrado'; });
+      .then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            if (user.emailVerified === false) {
+              divElemt.querySelector('#messages').innerHTML = '⚠️ Email no verificado, revise su correo porfavor.';
+              firebase.auth().signOut();
+            } else {
+              divElemt.querySelector('#messages').innerHTML = 'Puede ingresar';
+              window.location.hash = '#/wall';
+              // changeView(window.location.hash);
+            }
+          }
+        });
+      })
+      .catch(() => {
+        divElemt.querySelector('#messages').innerHTML = '⚠️ Cuenta o clave no coinciden verifique o pulse click en REGISTRATE.';
+      });
   });
   // googlesignin function
   const btngoogleSignIn = divElemt.querySelector('#gmail');
   btngoogleSignIn.addEventListener(('click'), () => {
     googleSignIn()
       .then((result) => {
-        changeHash('#/wall');
+        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        window.location.hash = '#/wall';
+        // changeHash('#/wall');
         console.log(result);
         console.log('Cuenta de Google registrada!!!');
       }).catch((error) => {
@@ -53,7 +73,10 @@ export default () => {
   btnLoginFAcebook.addEventListener(('click'), () => {
     loginFacebook()
       .then((result) => {
-        changeHash('#/wall');
+        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        window.location.hash = '#/wall';
+        // changeHash('#/wall');
+        console.log('Ingreso con facebook');
       })
       .catch(() => {});
   });
