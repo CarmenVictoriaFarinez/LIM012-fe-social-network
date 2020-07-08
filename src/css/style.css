@@ -2,6 +2,94 @@
     /*background-color: #dd6086;*/
     background-color: #EB79BD;
 }
+/* -------------- estilo general para header  -------------- */
+header{
+    width: 100%;
+    background-color: #6CD3FF;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header label{
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding:10px;
+}
+header label:hover{
+    cursor: pointer;
+    
+}
+#btn-menu{
+    display:none;
+}
+#btn-menu:checked ~ .menu{
+    margin-left: 0;
+}
+.fa-bars:before {
+    content: "\f0c9";
+    color: #EB79BD;
+}
+.fa-sign-out-alt:before {
+    content: "\f2f5";
+    color: #EB79BD;
+    /* font-size: 200%; */
+}
+.fa-user-edit:before {
+    content: "\f4ff";
+    color: #EB79BD;
+    /* font-size: 180%; */
+}
+.fa-home:before {
+    content: "\f015";
+    color: #EB79BD;
+}
+.show{
+    display: flex;
+}
+.hide{
+    display: none;
+}
+nav{
+    width: 100%;
+}
+.logo-header{
+    display: none;
+}
+.btn-header{
+    text-decoration: none;
+}
+.menu{
+    padding-left: 0%;
+    padding: 10px;
+    margin-top: 45px;
+    margin-bottom: 0%;
+    list-style: none;
+    flex: auto;
+    line-height: 3;
+    position: absolute;
+    background: #6CD3FF;
+    margin-left: -70%;
+}
+
+
+.menu a{
+    color: black;
+    text-decoration:none;
+    text-align: center;
+}
+header nav ul li a:hover {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(0,0,255,0.3);
+}
+li{
+    flex:auto;   
+}
+
 /* ---------- estilo botones circulares  --------- */
 .circulo-img{
     height: 70%;
@@ -17,7 +105,7 @@
     width: 20px;
     border-radius: 100%;
     border: 2px solid #FFFFFF;
-    /* margin-left: 20%; */
+    margin-right: 4%;
     padding: 1%;
     cursor: pointer;
 }
@@ -38,7 +126,7 @@
 button{
     cursor: pointer;
 }
-input{
+.allInputs{
     margin-top: 1%;
     margin-bottom: 3%;
     margin-left: 5%;
@@ -110,39 +198,6 @@ input{
     border: 1px solid #FFFFFF;
     text-align: center;
 }
-/* -------------- estilo general para header  -------------- */
-header{
-    width: 100%;
-    background-color: #6CD3FF;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.btn-header{
-    display: flex;
-    text-decoration: none;
-    margin: 1%;
-}
-.fa-sign-out-alt:before {
-    content: "\f2f5";
-    color: #EB79BD;
-    font-size: 200%;
-}
-.fa-user-edit:before {
-    content: "\f4ff";
-    color: #EB79BD;
-    font-size: 180%;
-}
-.show{
-    display: flex;
-}
-.hide{
-    display: none;
-}
-.logo-header{
-    height: 50px;
-}
 
 /* --------- estilos generales datos del usuario ------------ */
 .circulo{
@@ -184,16 +239,19 @@ header{
     position: relative;
     width: 100%;
     background-color: #6CD3FF;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .user-name-profile{
     text-align: center;
 }
 /* -------------- estilos generales para post --- -------------- */
 .image-post{
-    max-width: 100%;
+        max-width: 100%;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
     box-sizing: border-box;
+    text-align: center;
 }
 .post, .user{
     padding: 0% 1%;
@@ -216,7 +274,7 @@ header{
     display: flex;
     flex-direction: column;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     /* flex-wrap: wrap-reverse; */
 }
 select {
@@ -230,11 +288,13 @@ select {
 }
 
 .select-edited{
-    width: 15%;
-    /* height: 40%; */
-    /* margin-left: 7%; */
+    width: 40px;
+    height: 18px;
+    margin-left: 2px;
     border-bottom: 100%;
     padding: 0%;
+    border-radius: 10px;
+    font-size: 10px;
 }
 .new-state{
     padding-left: 1%;
@@ -275,9 +335,14 @@ article.post-format{
 .only-lines{
     border-left: none;
     border-right: none;
-    border-top-color:#c1c1c1;
+    /* border-top-color: #c1c1c1; */
     border-bottom-color: 1px solid #C1C1C1;
-    border-radius: 0px;
+    /* border-radius: 0px; */
+    margin-top: 0%;
+    margin-bottom: 0%;
+    /* padding-bottom: 20%; */
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
 }
 
 .post-show-like-comments{
@@ -304,10 +369,9 @@ h4 {
 }
 #infoAlign{
     display: flex;
-    height: 30;
-    /* margin-bottom: 0%; */
+    height: 34px;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
 }
 #miniButtons{
@@ -321,6 +385,107 @@ h4 {
     flex-flow: column;
     width: 100%;
 }
+/* -------------- estilos para div botones like comentarios-------------  */
+.btns-likes-comments{
+    height: 60px;
+    border-bottom-color: #e5e5e5;
+    border-bottom-style: double;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn-show-comm{
+    margin-left: 20%;
+}
+.counter-text{
+    margin: 0% 2%;
+}
+/* ------------------- estilos para comentarios -------------------  */
+section.comments{
+    flex-direction: column;
+}
+.new-comment{
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+}
+.bg{
+    background-color: #f6e9e9;
+}
+div.new-comment input, div.new-comment input:focus{
+    margin: 0%;
+    color:#333;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2em;
+    padding: 2%;
+    width: 100%;
+}
+section.old-comments{
+    flex-direction: column;
+}
+.comment-main{
+    display: flex;
+    padding-right: 2%;
+    margin-bottom: 3%;
+}
+.comment-data{
+    max-width: 100%;
+    min-width: inherit;
+    border-radius: 10px;
+    padding: 1% 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.comment-data h4{
+    margin-top: 0px;
+}
+.comment-date{
+    font-size: 0.8em;
+}
+.i-mnu-options, .i-send{
+    padding: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+.i-mnu-options:hover {
+    padding: 2px;
+    border-radius: 100%;
+    background-color: rgba(0,0,0,0.1);
+}
+
+/*------------------- menu para editar eliminar comentarios ------------- */
+.tooltip-container {
+    position: relative;
+}
+.tooltip {
+position: relative;
+border-radius: 6px;
+padding: 6px;
+width: 120px;
+height: 70px;
+left: 4px;
+background: #FFFFFF;
+border-color: rgba(0, 0, 0, .5);
+box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+.opt {
+  position: relative;
+  color: #1d1c1c;
+  padding: 7px 10px;
+}
+.opt:hover {
+  display: block;
+  background: #666;
+  cursor: pointer;
+}
+.icon-tool {
+  font-size: 10px;
+  cursor: pointer;
+  padding-right: 4px
+}
+
 @media only screen and (max-width: 768px) {
     body{
         padding-top: 0%;
@@ -384,13 +549,8 @@ h4 {
     /* .fa-sign-out-alt:before {
         padding-left: 120%;
     } */
-    .logo-header {
-        display: flex;
-        height: 40px;
-        text-align: center;
-        height: 30px;
-    }
     .circulo-profile{
         margin-top: 5%;
     }
+
 }

@@ -1,5 +1,5 @@
-import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
-import { updateUser } from '../model/firebase_wall.js';
+import { logIn, googleSignIn, loginFacebook } from '../model/firebase_auth.js';
+import { createUser } from '../model/firebase_user.js';
 
 // export const changeHash = (hash) => {
 //   window.location.hash = hash;
@@ -12,8 +12,8 @@ export default () => {
   Comparte tus mejores pasos en la comunidad de baile más grande de internet.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>INICIA SESIÓN</p>
-  <div><i class="far fa-user"></i><input id ="email" type="text" placeholder="Correo electronico"></div>
-  <div><i class="fas fa-lock"></i><input id ="pass" type="password" placeholder="Contraseña"></div>
+  <div><i class="far fa-user"></i><input class='allInputs 'id ="email" type="text" placeholder="Correo electronico"></div>
+  <div><i class="fas fa-lock"></i><input class='allInputs 'id ="pass" type="password" placeholder="Contraseña"></div>
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
@@ -58,7 +58,11 @@ export default () => {
   btngoogleSignIn.addEventListener(('click'), () => {
     googleSignIn()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        createUser(result.user.uid, result.user.displayName, result.user.photoURL, 'Aprendiendo a Bailar')
+          .catch((error) => {
+            console.log(error);
+            console.log('No se actualizo usuario');
+          });
         window.location.hash = '#/wall';
         // changeHash('#/wall');
         console.log(result);
@@ -73,7 +77,7 @@ export default () => {
   btnLoginFAcebook.addEventListener(('click'), () => {
     loginFacebook()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        createUser(result.user.uid, result.user.displayName, result.user.photoURL, 'Aprendiendo a Bailar');
         window.location.hash = '#/wall';
         // changeHash('#/wall');
         console.log('Ingreso con facebook');
