@@ -1,5 +1,5 @@
-import { newUser, verifEmail } from '../model/firebase.js';
-import { updateUser } from '../model/firebase_wall.js';
+import { newUser, verifEmail } from '../model/firebase_auth.js';
+import { createUser } from '../model/firebase_user.js';
 
 const showMessage = (txtmessage) => {
   const showWindow = document.createElement('div');
@@ -25,7 +25,7 @@ const registerUser = (userEmail, userPass, userNames) => {
         // Error occurred. Inspect error.code.
         });
       // guardar nombre del usuario en coleccion users
-      updateUser(result.user.uid, userNames, './img/avatar-perfil.jpg');
+      createUser(result.user.uid, userNames, './img/avatar-perfil.jpg', 'Aprendiendo a bailar');
       window.location.hash = '';
     })
     .catch(() => {
@@ -47,9 +47,9 @@ export default () => {
   <p id='texto'>¿Qué esperas para unirte? Somos la comunidad de baile más grande de internet. Aprende, comparte y disfruta en MOVES.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>CREA TU CUENTA</p>
-  <div><i class="far fa-user"></i><input type="text" id ="names" placeholder ="Nombres y Apellidos"></div>
-  <div><i class="fas fa-at"></i><input type="text" id = "email" placeholder="Correo electronico"></div>
-  <div><i class="fas fa-lock"></i><input type="password" id = "pass" placeholder="Contraseña"></div>
+  <div><i class="far fa-user"></i><input class='allInputs' type="text" id ="names" placeholder ="Nombres y Apellidos"></div>
+  <div><i class="fas fa-at"></i><input class='allInputs' type="text" id = "email" placeholder="Correo electronico"></div>
+  <div><i class="fas fa-lock"></i><input class='allInputs' type="password" id = "pass" placeholder="Contraseña"></div>
   <button type="button" id="btn-register" class='principal-button'>REGISTRATE</button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>¿Ya tienes una cuenta?</p><a id='just-link'href="">Inicia Sesión</a>
