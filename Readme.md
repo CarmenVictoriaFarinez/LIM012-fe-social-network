@@ -14,12 +14,12 @@ Prototipo de Alta Fidelidad:
 
 - Versión Mobile
 
-![prototipobaja](/src/screen/proto1.jpg)
+![prototipobaja](/src/screen/img1.png)
 
 
 - Versión Web
 
-![prototipoalata](/src/screen/proto2.jpg)
+![prototipoalata](/src/screen/img2.png)
 
 Versión final del proyecto:
 
