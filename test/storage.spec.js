@@ -1,4 +1,4 @@
-import { mocksdk } from '../__mocks__/firebase.mock.js';
+/* import { mocksdk } from '../__mocks__/firebase.mock.js';
 
 import { uploadImage } from '../src/model/storage.js';
 // MockStorageReference = firebase.storage().ref()
@@ -16,4 +16,4 @@ describe('uploadImage', () => {
       done();
     });
   });
-});
+}); */

@@ -1,21 +1,32 @@
 /* const firebasemock = require('firebase-mock');
 
-const mockauth = new firebasemock.MockAuthentication();
-const mockdatabase = new firebasemock.MockFirebase();
-const mockfirestore = new firebasemock.MockFirestore();
-const mockstorage = new firebasemock.MockStorage();
-const mockmessaging = new firebasemock.MockMessaging();
 
-const mocksdk = new firebasemock.MockFirebaseSdk(
+export const mocksdk = new firebasemock.MockFirebaseSdk(
   // use null if your code does not use RTDB
-  path => (path ? mockdatabase.child(path) : mockdatabase),
+  (path) => {
+    return path ? mockdatabase.child(path) : mockdatabase;
+  },
   // use null if your code does not use AUTHENTICATION
-  () => mockauth,
+  () => {
+    return mockauth;
+  },
   // use null if your code does not use FIRESTORE
-  () => mockfirestore,
-  // use null if your code does not use STORAGE
-  () => mockstorage,
-  // use null if your code does not use MESSAGING
-  () => mockmessaging,
-);
-*/
+  () => {
+    return mockfirestore;
+  },
+  () => ({
+    ref: () => ({
+      child: path => ({
+        put: (image, metadata) => (
+          new Promise(resolve => {
+            resolve({
+              ref: {
+                getDownloadURL: () => ({ path })
+              }
+            })
+          })
+        )
+      })
+    })
+  })
+); */
