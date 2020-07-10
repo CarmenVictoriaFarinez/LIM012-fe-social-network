@@ -68,7 +68,6 @@ export default (profile) => {
   if (profile) {
     buttonEditText.classList.remove('hide');
     buttonEditText.addEventListener('click', () => {
-      // buttonSaveName.classList.remove('hide');
       buttonSaveText.classList.remove('hide');
       nameProfile.contentEditable = true;
       descriptionProfile.contentEditable = true;

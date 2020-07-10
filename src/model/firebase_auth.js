@@ -21,18 +21,3 @@ export const verifEmail = () => {
 
 // logout
 export const logOut = () => firebase.auth().signOut();
-
-/* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    window.location.hash = '#/wall';
-    const displayName = user.displayName;
-    const email = user.email;
-    const emailVerified = user.emailVerified;
-    const photoURL = user.photoURL;
-    const isAnonymous = user.isAnonymous;
-    const uid = user.uid;
-    const providerData = user.providerData;
-  } else {
-    window.location.hash = '#/';
-  }
-}); */
